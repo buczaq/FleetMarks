@@ -24,11 +24,21 @@ function saveLinkToStorage(title, link) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
     var saveTabButton = document.getElementById('saveTab');
 
     saveTabButton.addEventListener('click', function() {
       chrome.tabs.getSelected(null, function(tab) {
         saveLinkToStorage(tab.url, tab.title);
+      });
+    }, false);
+
+    var saveAndCloseTabButton = document.getElementById('saveAndCloseTab');
+
+    saveAndCloseTabButton.addEventListener('click', function() {
+      chrome.tabs.getSelected(null, function(tab) {
+        saveLinkToStorage(tab.url, tab.title);
+        chrome.tabs.remove(tab.id, function() { });
       });
     }, false);
 
