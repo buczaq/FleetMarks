@@ -1,5 +1,7 @@
 ![FleetMarks - there is something between tab and bookmark...](banner.png)
 
+> :warning: Please note that **this project is still under development!** It is not functional at this moment.
+
 # What is FleetMark?
 
 Do you often come across content that is too interesting to close it, but you don't have time to read it at the moment?
