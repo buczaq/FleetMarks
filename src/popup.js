@@ -33,6 +33,14 @@ function saveLinkToStorage(title, link) {
 
 }
 
+function clearStorage() {
+
+    chrome.storage.local.clear(function() {
+        console.log('Storage has been cleared');
+     });
+
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     var saveTabButton = document.getElementById('saveTab');
@@ -50,6 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
         saveLinkToStorage(tab.url, tab.title);
         chrome.tabs.remove(tab.id, function() { });
       });
+    }, false);
+
+    var deleteAllButton = document.getElementById('deleteAll');
+
+    deleteAllButton.addEventListener('click', function() {
+        clearStorage();
     }, false);
 
   }, false
