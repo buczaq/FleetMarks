@@ -1,3 +1,11 @@
+function setLinkInHtml(title, link) {
+
+    var link1 = document.getElementById('link1');
+    link1.textContent = title;
+    link1.href = link;
+
+}
+
 function saveLinkToStorage(title, link) {
 
     chrome.storage.local.get(["FleetMarks_LinksData"], function(result) {
@@ -16,6 +24,8 @@ function saveLinkToStorage(title, link) {
         dataInJson[title] = link;
         var dataToSet = JSON.stringify(dataInJson);
 
+        setLinkInHtml(title, link);
+
         chrome.storage.local.set({"FleetMarks_LinksData": dataToSet}, function() {
             console.log('Value in storage has been updated to:  ' + dataToSet);
           });
@@ -29,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     saveTabButton.addEventListener('click', function() {
       chrome.tabs.getSelected(null, function(tab) {
-        saveLinkToStorage(tab.url, tab.title);
+        saveLinkToStorage(tab.title, tab.url);
       });
     }, false);
 
@@ -42,4 +52,5 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, false);
 
-  }, false);
+  }, false
+);
