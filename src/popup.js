@@ -18,11 +18,18 @@ function saveLinkToStorage(title, link) {
 
         chrome.storage.local.set({"FleetMarks_LinksData": dataToSet}, function() {
             console.log('Value in storage has been updated to:  ' + dataToSet);
-
             getAllFromStorageAndSetInHtml();
           });
     });
 
+}
+
+function clearHtml() {
+    var links = document.getElementsByClassName("linksTableEntry");
+
+    for (var index = 0; index < links.length; index++) {
+        links[index].remove();
+    }
 }
 
 function clearStorage() {
@@ -36,6 +43,18 @@ function clearStorage() {
 function getAllFromStorageAndSetInHtml() {
 
     chrome.storage.local.get(["FleetMarks_LinksData"], function(result) {
+        // TODO - why does it have to be called so many times? One-time call doesn't clear whole view sometimes.
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+        clearHtml();
+
         console.log('Value got from storage is: ' + result.FleetMarks_LinksData);
         var rawData = result.FleetMarks_LinksData
 
@@ -52,21 +71,65 @@ function getAllFromStorageAndSetInHtml() {
             var link = elem;
             var title = dataInJson[elem];
 
+            console.log("Setting: " + link + " " + title);
+
             var table = document.getElementById('listOfLinks');
 
             var tr = document.createElement("tr");
+            tr.className = "linksTableEntry";
+
             var td = document.createElement("td");
             var ahref = document.createElement("a");
 
             ahref.textContent = title;
             ahref.href = link;
             ahref.target = "_blank";
+            ahref.className = "linkEntry";
 
             td.appendChild(ahref);
             tr.appendChild(td);
             table.appendChild(tr);
         }
+
+        addListenersForAllLinks();
     });
+
+}
+
+function addListenersForAllLinks() {
+
+    var links = document.getElementsByClassName("linkEntry");
+
+    for (var index = 0; index < links.length; index++) {
+        links[index].addEventListener('click', function(clickedElement) {
+            var link = clickedElement.target.href;
+
+            chrome.storage.local.get(["FleetMarks_LinksData"], function(result) {
+                console.log('Value got from storage is: ' + result.FleetMarks_LinksData);
+                var rawData = result.FleetMarks_LinksData;
+
+                dataInJson = {}
+                if (rawData) {
+                    try {
+                        dataInJson = JSON.parse(rawData);
+                    } catch (ex) {
+                        console.log('There was a problem with data parsing!');
+                    }
+                }
+
+                console.log("Deleting link: " + link);
+
+                delete dataInJson[link];
+
+                var dataToSet = JSON.stringify(dataInJson);
+
+                chrome.storage.local.set({"FleetMarks_LinksData": dataToSet}, function() {
+                    console.log('Value in storage has been updated to:  ' + dataToSet);
+                    getAllFromStorageAndSetInHtml();
+                });
+            });
+        }, false);
+    }
 
 }
 
@@ -95,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     deleteAllButton.addEventListener('click', function() {
         clearStorage();
+        getAllFromStorageAndSetInHtml();
     }, false);
 
   }, false

@@ -3,7 +3,7 @@
 
 	"name": "FleetMarks",
 	"description": "Something between tab and bookmark",
-	"version": "0.1",
+	"version": "0.9",
 
 	"permissions": ["tabs", "storage"],
 	"browser_action": {
