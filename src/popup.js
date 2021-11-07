@@ -74,6 +74,8 @@ function getAllFromStorageAndSetInHtml() {
             var table = document.getElementById('listOfLinks');
 
             var tr = document.createElement("tr");
+            tr.className = "linksTableEntry";
+
             var td = document.createElement("td");
             var i = document.createElement("i");
 
