@@ -1,0 +1,36 @@
+.fancyButton{
+    position: relative;
+
+    display: block;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 11px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    text-align: center;
+    transition: all .5s;
+    float: left;
+}
+  
+.fancyButton:hover{
+    background-color: rgb(182, 211, 224);
+}
+
+* {
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(odd){
+    background-color: rgb(223, 207, 231);
+}
+
+tr:nth-child(even){
+    background-color: rgb(208, 188, 219);
+}

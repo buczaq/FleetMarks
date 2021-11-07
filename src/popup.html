@@ -3,20 +3,27 @@
   <head>
     <title>FleetMarks</title>
     <script src="popup.js"></script>
+    <link rel="stylesheet" href="popup.css">
   </head>
-    <img src="images/banner_title_only.png" width=200></img>
-    <body style="background-color:skyblue;">
-        <button id="saveAndCloseTab">save & close current tab</button>
-        <button id="saveTab">save current tab</button>
+    <center><img src="images/banner_title_only.png"></img></center>
+    <body style="background-color:rgb(237, 226, 243);">
+        <br/>
+        <div id="saveAndCloseTab" class="fancyButton">save & close current tab</div>
+        <div id="saveTab" class="fancyButton">save current tab</div>
 
-        <table id="listOfLinks" style="border: 1px solid">
+        <br/><br/><br/>
+
+        <table id="listOfLinks" width="420px">
         </table>
+
+        <br/>
 
         <!--TODO: implement these buttons!-->
         <!--<button id="openAll">open all</button>-->
         <!--<button id="deleteOlderThan">delete older than 3 days</button>-->
-        <button id="deleteAll">delete all</button>
+        <div button id="deleteAll" class="fancyButton">delete all</div>
 
-        <h6 width=500>FleetMarks by buczaq, 2021</h6>
+        <br/><br/>
+        <center><h5><a href="https://github.com/buczaq/FleetMarks" target="_blank">FleetMarks by buczaq, 2021</a></h6></center>
   </body>
 </html>
