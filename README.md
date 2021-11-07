@@ -1,7 +1,5 @@
 ![FleetMarks - there is something between tab and bookmark...](banner.png)
 
-> :warning: Please note that **current version (0.9) works, but it's ugly, has some workarounds and definitely contains bugs!**
-
 # What is FleetMark?
 
 Do you often come across content that is too interesting to close it, but you don't have time to read it at the moment?

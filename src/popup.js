@@ -70,6 +70,20 @@ function getAllFromStorageAndSetInHtml() {
             } catch (ex) {
                 console.log('There was a problem with data parsing!');
             }
+        } else {
+            var table = document.getElementById('listOfLinks');
+
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            var i = document.createElement("i");
+
+            i.textContent = "There are no links yet - add some!";
+
+            td.appendChild(i);
+            tr.appendChild(td);
+            table.appendChild(tr);
+
+            return;
         }
 
         for (const elem in dataInJson) {
