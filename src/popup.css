@@ -29,6 +29,11 @@
     letter-spacing: 0.5px;
 }
 
+td:hover{
+    transition: all .5s;
+    background-color: rgb(182, 211, 224);
+}
+
 tr:nth-child(odd){
     background-color: rgb(223, 207, 231);
 }
