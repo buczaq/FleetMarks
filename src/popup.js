@@ -100,7 +100,7 @@ function getAllFromStorageAndSetInHtml() {
             var td = document.createElement("td");
             var ahref = document.createElement("a");
 
-            ahref.textContent = title;
+            ahref.textContent = "• " + title;
             ahref.href = link;
             ahref.target = "_blank";
             ahref.className = "linkEntry";
