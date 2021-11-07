@@ -13,6 +13,11 @@ function saveLinkToStorage(title, link) {
             }
         }
 
+        const titleLengthLimit = 60;
+        if (title.length > 60) {
+            title = title.substr(0, titleLengthLimit) + "...";
+        }
+
         dataInJson[link] = title;
         var dataToSet = JSON.stringify(dataInJson);
 
