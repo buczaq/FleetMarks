@@ -16,6 +16,7 @@
     float: left;
     margin-right: 5px;
     text-align: center;
+    cursor: default;
 }
   
 .fancyButton:hover{
@@ -40,4 +41,12 @@ tr:nth-child(odd){
 
 tr:nth-child(even){
     background-color: rgb(208, 188, 219);
+}
+
+b{
+    cursor: default;
+}
+
+.entryRemoverParent{
+    max-width: 11px;
 }

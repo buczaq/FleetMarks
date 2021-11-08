@@ -20,5 +20,6 @@ But it's still pretty cool, right?
 ### Further development
 
 1. Make whole rows clickable, not just the link.
-2. Add a "trash can" button for removing items without opening them.
-3. Implement "open all" button.
+2. Implement "open all" button.
+3. Add page icon to the entry.
+4. Add switch for deleting / not deleting item on-click.
