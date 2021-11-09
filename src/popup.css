@@ -47,6 +47,11 @@ b{
     cursor: default;
 }
 
+.table {
+    table-layout: fixed;
+}
+
 .entryRemoverParent{
-    max-width: 11px;
+    width:4%;
+    max-width: 10px;
 }
