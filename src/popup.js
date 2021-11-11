@@ -158,14 +158,18 @@ function addListenersForAllLinks() {
 
                 console.log("Deleting link: " + link);
 
-                delete dataInJson[link];
+                var deleteOnClickToggleIsChecked = document.getElementById("deleteOnClickToggle").checked;
 
-                var dataToSet = JSON.stringify(dataInJson);
+                if (deleteOnClickToggleIsChecked) {
+                    delete dataInJson[link];
 
-                chrome.storage.local.set({"FleetMarks_LinksData": dataToSet}, function() {
-                    console.log('Value in storage has been updated to: ' + dataToSet);
-                    getAllFromStorageAndSetInHtml();
-                });
+                    var dataToSet = JSON.stringify(dataInJson);
+
+                    chrome.storage.local.set({"FleetMarks_LinksData": dataToSet}, function() {
+                        console.log('Value in storage has been updated to: ' + dataToSet);
+                        getAllFromStorageAndSetInHtml();
+                    });
+                }
             });
         }, false);
     }
@@ -204,9 +208,45 @@ function addListenersForAllLinks() {
         }, false);
     }
 
+    var deleteOnClickToggle = document.getElementById("deleteOnClickToggle");
+
+    deleteOnClickToggle.addEventListener('click', function(clickedElement) {
+        var checked = clickedElement.target.checked;
+
+        var toSet;
+        if (checked) {
+            toSet = "true";
+        } else {
+            toSet = "false";
+        }
+
+        chrome.storage.local.set({"FleetMarks_deleteOnClickToggle": toSet}, function() {
+            console.log('Value of deleteOnClickToggle in storage has been updated to:  ' + toSet);
+            getAllFromStorageAndSetInHtml();
+        });
+    }, false);
+
+}
+
+function getDeleteOnClickToggleFromStorageAndSetInHtml() {
+
+    chrome.storage.local.get(["FleetMarks_deleteOnClickToggle"], function(result) {
+        console.log('deleteOnClickToggle is set in storage to:  ' + result.FleetMarks_deleteOnClickToggle);
+
+        var deleteOnClickToggle = document.getElementById("deleteOnClickToggle");
+
+        if (result.FleetMarks_deleteOnClickToggle == "true") {
+            deleteOnClickToggle.checked = true;
+        } else if (result.FleetMarks_deleteOnClickToggle == "false") {
+            deleteOnClickToggle.checked = false;
+        }
+         
+    });
+
 }
 
 getAllFromStorageAndSetInHtml();
+getDeleteOnClickToggleFromStorageAndSetInHtml();
 
 document.addEventListener('DOMContentLoaded', function() {
 

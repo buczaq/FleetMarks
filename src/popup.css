@@ -55,3 +55,42 @@ b{
     width:4%;
     max-width: 10px;
 }
+
+/* Nice toggle button thanks to: https://code-boxx.com/pure-simple-css-toggle-button/ */
+
+.toggle input {
+    display: none;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 15px;
+}
+
+.slider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  cursor: pointer;
+  border: 2px solid #bd665a;
+  background-color: #bd665a;
+}
+
+.slider::before {
+  content: "";
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  background-color: #eee;
+}
+
+.slider, .slider::before { transition: all 0.2s; }
+.toggle input:checked + .slider {
+  border: 2px solid #92c96d;
+  background-color: #92c96d;
+}
+
+.toggle input:checked + .slider::before { left: 50%; }
