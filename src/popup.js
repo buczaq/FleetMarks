@@ -39,7 +39,7 @@ function clearHtml() {
 
 function clearStorage() {
 
-    chrome.storage.local.clear(function() {
+    chrome.storage.local.remove(["FleetMarks_LinksData"], function() {
         console.log('Storage has been cleared');
      });
 
