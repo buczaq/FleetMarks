@@ -17,7 +17,13 @@ Isn't it wonderful?! Well, I guess it's not - let's have some respect to the sup
 
 But it's still pretty cool, right?
 
-### Further development
+# Screenshots from version 1.2
+
+![Screenshot from v1.2 - empty list of links](screenshots/ss_1_v_1_2.png)
+
+![Screenshot from v1.2 - populated list of links](screenshots/ss_2_v_1_2.png)
+
+# Further development
 
 1. Make whole rows clickable, not just the link.
 2. Add page icon to the entry.
